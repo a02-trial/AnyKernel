@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=NoVA by Abdul7852
+kernel.string=Brave by itsmelynxs
 do.devicecheck=1
 do.modules=0
 do.systemless=1
