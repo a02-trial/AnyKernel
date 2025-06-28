@@ -50,7 +50,7 @@ if isTimRom; then
 
     ui_print " » Custom ROM recognition: Tim's Signature ";
     ui_print " » Initiating vibration fix deployment "
-    ui_print " » Executing Furina flash , Let's Make Your Begonia Brrrr....";
+    ui_print " » Executing Arcadium , Let's Make Your Begonia Exploded....";
 
     split_boot;
     patch_cmdline initcall_blacklist initcall_blacklist=
@@ -72,7 +72,7 @@ elif isDerp; then
     rm -rf $ramdisk/overlay.d;
 
     ui_print " » Custom ROM recognition: DerpFest's detected ";
-    ui_print " » Executing Furina flash , Let's Make Your Begonia Brrrr....";
+    ui_print " » Executing Arcadium , Let's Make Your Begonia Exploded....";
 
     dump_boot;
     write_boot;
@@ -91,7 +91,7 @@ else
     rm -rf $ramdisk/overlay;
     rm -rf $ramdisk/overlay.d;
 
-    ui_print " » Executing Furina flash , Let's Make Your Begonia Brrrr....";
+    ui_print " » Executing Arcadium , Let's Make Your Begonia Exploded....";
 
     dump_boot;
     write_boot;
