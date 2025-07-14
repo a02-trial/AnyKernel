@@ -1,10 +1,10 @@
-# AnyKernel3 Ramdisk Mod Script
-# osm0sis @ xda-developers
+# AnyKernel3 Ramdisk Mod Script – Axira+ Signature Edition
+# osm0sis @ xda-developers | modded by Copilot & Irfan
 
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Furina-4.14.336-begonia
+kernel.string=Axira+ vNext for Begonia
 do.devicecheck=1
 do.modules=0
 do.systemless=1
@@ -16,31 +16,23 @@ supported.versions=
 supported.patchlevels=
 '; } # end properties
 
+# ROM Detection Logic
 isTimRom() {
   build_prop="/system/build.prop"
   version_prop="ro.crdroid.build.version"
-
-  if grep -q "$version_prop" "$build_prop" && grep -q "timjosten" "$build_prop"; then
-    return 0
-  else
-    return 1
-  fi
+  grep -q "$version_prop" "$build_prop" && grep -q "timjosten" "$build_prop"
 }
 
 isDerp() {
   build_prop="/system/build.prop"
   version_prop="ro.derp.fingerprint"
-
-  if grep -q "$version_prop" "$build_prop" && grep -q "DerpFest" "$build_prop"; then
-    return 0
-  else
-    return 1
-  fi
+  grep -q "$version_prop" "$build_prop" && grep -q "DerpFest" "$build_prop"
 }
 
-# Initialize block
+# Block Setup
 block=/dev/block/bootdevice/by-name/boot;
 
+# Flashing Logic Starts
 if isTimRom; then
     block=boot;
     is_slot_device=auto;
@@ -48,16 +40,18 @@ if isTimRom; then
 
     . tools/ak3-core.sh;
 
-    ui_print " » Custom ROM recognition: Tim's Signature ";
-    ui_print " » Initiating vibration fix deployment "
-    ui_print " » Executing Arcadium , Let's Make Your Begonia Exploded....";
+    ui_print "╭──────────────────────────────╮"
+    ui_print "│  🎯 ROM: Tim's Signature Detected   │"
+    ui_print "│  🔧 Axira+ Kernel Deployment       │"
+    ui_print "╰──────────────────────────────╯"
+    ui_print "» Vibration Layer Optimization »"
+    ui_print "» Welcome to Axira+ — Precision Begins »"
 
     split_boot;
     patch_cmdline initcall_blacklist initcall_blacklist=
     flash_boot;
 
 elif isDerp; then
-
     block=/dev/block/by-name/boot;
     is_slot_device=0;
     ramdisk_compression=auto;
@@ -71,14 +65,16 @@ elif isDerp; then
     rm -rf $ramdisk/overlay;
     rm -rf $ramdisk/overlay.d;
 
-    ui_print " » Custom ROM recognition: DerpFest's detected ";
-    ui_print " » Executing Arcadium , Let's Make Your Begonia Exploded....";
+    ui_print "╭──────────────────────────────╮"
+    ui_print "│  🎯 ROM: DerpFest Detected          │"
+    ui_print "│  🔧 Axira+ Kernel Deployment       │"
+    ui_print "╰──────────────────────────────╯"
+    ui_print "» Welcome to Axira+ — Elegance Loaded »"
 
     dump_boot;
     write_boot;
 
 else
-
     is_slot_device=0;
     ramdisk_compression=auto;
     no_block_display=true;
@@ -91,7 +87,11 @@ else
     rm -rf $ramdisk/overlay;
     rm -rf $ramdisk/overlay.d;
 
-    ui_print " » Executing Arcadium , Let's Make Your Begonia Exploded....";
+    ui_print "╭──────────────────────────────╮"
+    ui_print "│  📦 Generic ROM Detected             │"
+    ui_print "│  🔧 Axira+ Kernel Deployment       │"
+    ui_print "╰──────────────────────────────╯"
+    ui_print "» Executing kernel transition... »"
 
     dump_boot;
     write_boot;
