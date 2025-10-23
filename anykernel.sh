@@ -4,14 +4,14 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Axira+ vNext for Begonia
+kernel.string=Axira+ vNext for a02
 do.devicecheck=1
 do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=1
-device.name1=begonia
-device.name2=begoniain
+device.name1=a02
+device.name2=SM-A022F
 supported.versions=
 supported.patchlevels=
 '; } # end properties
